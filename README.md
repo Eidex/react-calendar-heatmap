@@ -8,6 +8,24 @@ A calendar heatmap component built on SVG, inspired by github's commit calendar 
 
 [![react-calendar-heatmap screenshot](/demo/public/react-calendar-heatmap.png?raw=true)](https://codesandbox.io/s/73mk9wlyx)
 
+## Forked Changes
+Modified line #305 in `src/index.js` to remove bit-wise & condition. This was making it so that only the odd-numbered weekday labels were showing on the calendar.
+```
+return dayIndex & 1 ? (
+    <text key={`${x}${y}`} x={x} y={y} className={cssClasses}>
+        {weekdayLabel}
+    </text>
+) : null;
+```
+to
+```
+return (
+    <text key={`${x}${y}`} x={x} y={y} className={cssClasses}>
+        {weekdayLabel}
+    </text>
+);
+```
+
 ## Setup
 
 Install the npm module with yarn or npm:
